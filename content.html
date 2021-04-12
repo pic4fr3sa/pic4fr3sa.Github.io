@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZIkOh31T6Fa_CN0JCpOm6K_Z9VcScC-Q"></script>
+<style>
+  body {
+      background-color: black;
+      background-image:url('keching.jpg') ;
+  }
+  
+</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!-- styling for sample -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+</head>
+<body>
+    <center>
+        <button type="button" class="btn btn-primary" onclick="findMe()">Show location</button>   
+    <br>
+    <br>
+    <div id="map" style="width: 1000px; height: 1000px;"></div>
+</center>
+    <script>
+      function findMe(){
+            var divMapa = document.getElementById('map');
+      navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+      function fn_mal(){}
+      function fn_ok (rta) {
+  
+        var lat = rta.coords.latitude;
+        var lon = rta.coords.longitude;
+  
+        var gLatLon = new google.maps.LatLng (lat, lon);
+        var objConfig = {
+            zoom: 17,
+            center: gLatLon
+  
+        } 
+        var gMapa = new google.maps.Map(divMapa, objConfig);
+        var objConfigMarker = {
+          position: gLatLon ,
+          map: gMapa,
+          
+        }
+        var gMarker = new google.maps.Marker(objConfigMarker);
+      }
+  
+      }
+  
+    </script>
+   
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v10.0" nonce="W8FghaFr"></script>
+<center>
+    <div class="fb-comments" data-href="http://localhost" data-width="1000" data-numposts="1"></div>
+</center>
+
+</body>
+</html>
